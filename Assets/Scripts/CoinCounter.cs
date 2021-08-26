@@ -9,17 +9,17 @@ public class CoinCounter : MonoBehaviour
     private GameObject[] _coinsObjects;
     private static int _coinsNumber;
 
-    void Start()
+    private void Start()
     {
         _coinsObjects = GameObject.FindGameObjectsWithTag("Coin");
     }
 
-    void Update()
+    private void Update()
     {
         TextWriter();
     }
 
-    void TextWriter()
+    private void TextWriter()
     {
         if (_coinsNumber != _coinsObjects.Length)
         {

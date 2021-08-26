@@ -4,27 +4,27 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Transform _cam;
-
+    [SerializeField] private float _speedAceleration;
+    
     public float Speed;
     public float RotationSpeed;
 
-    void Update()
+    private void Update()
     {
         MovingFast();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Moving();
         Rotating();
     }
 
-    void Moving()
+    private void Moving()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 move = new Vector3(horizontal, 0, vertical).normalized * Speed;
-
         if (move.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
@@ -33,20 +33,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void MovingFast()
+    private void MovingFast()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Speed += 5;
+            Speed += _speedAceleration;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            Speed -= 5;
+            Speed -= _speedAceleration;
         }
     }
 
-    void Rotating()
+    private void Rotating()
     {
         float mouseRotation = Input.GetAxis("Mouse X");
         transform.Rotate(0, mouseRotation * RotationSpeed * Time.deltaTime, 0);
