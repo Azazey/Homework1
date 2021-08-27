@@ -27,9 +27,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(horizontal, 0, vertical).normalized * Speed;
         if (move.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            _controller.Move(moveDir.normalized * Speed * Time.deltaTime);
+            _controller.Move(transform.TransformVector(move) * Speed * Time.deltaTime);
         }
     }
 

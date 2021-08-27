@@ -3155,8 +3155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 1596522424}
   _cam: {fileID: 963194228}
-  _speedAceleration: 5
-  Speed: 1
+  _speedAceleration: 2
+  Speed: 2
   RotationSpeed: 500
 --- !u!23 &1596522420
 MeshRenderer:
